@@ -1,15 +1,15 @@
-# My Rackerrank solutions with Python
+# My Rackerrank solutions
 
+## How to run local with docker
 
-#### How to run local with docker:
+### Clean up
 
-Clean up:
 ```shell
-sudo docker rm -f $(sudo docker ps -aq)
-sudo docker ps -a
+make clean-up
 ```
 
-Build image:
+### Build image
+
 ```shell
 sudo docker build --rm -t hackerrank-image:1 .
 sudo docker image ls -a
@@ -22,4 +22,10 @@ sudo docker ps
 
 ```shell
 sudo docker exec -it hackerrank bash
+```
+
+### Debug
+
+```shell
+make golang
 ```
