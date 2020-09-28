@@ -11,3 +11,9 @@ golang:
 	@$(eval APP_DIR:=/go/src/github.com/victorabarros/${APP_NAME})
 	@docker run -it -v $(shell pwd):${APP_DIR} -w ${APP_DIR} \
 		--name ${APP_NAME}-golang golang:1.14 bash
+
+python:
+	@echo "\e[1m\033[33mDebug mode\e[0m"
+	@$(eval APP_DIR:=/go/src/github.com/victorabarros/${APP_NAME})
+	@docker run -it -v $(shell pwd):${APP_DIR} -w ${APP_DIR} \
+		--name ${APP_NAME}-python python:3.81.14 bash
