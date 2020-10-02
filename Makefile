@@ -17,3 +17,9 @@ python:
 	@$(eval APP_DIR:=/go/src/github.com/victorabarros/${APP_NAME})
 	@docker run -it -v $(shell pwd):${APP_DIR} -w ${APP_DIR} \
 		--name ${APP_NAME}-python python:3.81.14 bash
+
+ip:
+	@docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${APP_NAME}
+
+ip-all:
+	@docker ps -aq | xargs docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
