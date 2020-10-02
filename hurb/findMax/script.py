@@ -7,46 +7,38 @@ import sys
 
 # Complete the solve function below.
 def solve(arr):
-    result = list()
-    idx = 0
+    result = 0
 
-    for n in arr:
-        result.append(index_product(idx, arr))
-        idx += 1
+    for idx in range(0, len(arr)):
+        r = index_product(idx, arr)
+        if r > result:
+            result = r
 
-    return max(result)
+    return result
 
 
 def index_product(idx, arr):
-    le = left(idx, arr)
-    ri = right(idx, arr)
-    resp = le * ri
-    # print(f"{idx}\t{arr[idx]}\t{le}\t{ri}\t{resp}")
-    return resp
+    return left(idx, arr) * right(idx, arr)
 
 
 def left(idx, arr):
-    resp, ii = 0, 0
+    resp = 0
 
-    for n in arr:
-        if ii >= idx:
-            break
-        if n > arr[idx]:
+    for ii in range(idx - 1, 0, -1):
+        if arr[ii] > arr[idx]:
             resp = ii + 1
-        ii += 1
+            break
 
     return resp
 
 
 def right(idx, arr):
-    resp, ii = 0, len(arr) - 1
+    resp = 0
 
-    for n in arr:
-        if ii <= idx:
-            break
+    for ii in range(idx + 1, len(arr)):
         if arr[ii] > arr[idx]:
             resp = ii + 1
-        ii -= 1
+            break
 
     return resp
 
