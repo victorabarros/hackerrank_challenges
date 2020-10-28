@@ -36,17 +36,7 @@ def surfaceArea(A):
     front = sum(fronts)
 
     # Calculate back
-    backs = [0 for ii in range(W)]
-    for ii, line in enumerate(reversed(A)):
-        for jj, ee in enumerate(line):
-            if ii == 0:
-                backs[jj] += ee
-                continue
-
-            ee_behind = A[ii - 1][jj]  # same element from line behind
-            if ee > ee_behind:
-                backs[jj] += ee - ee_behind
-    back = sum(backs)
+    back = front
 
     # Calculate left
     lefts = [0 for ii in range(H)]
@@ -63,41 +53,15 @@ def surfaceArea(A):
     left = sum(lefts)
 
     # Calculate right
-    rights = [0 for ii in range(H)]
-    for jj in range(W):
-        for ii in range(H):
-            ee = A[ii][W - jj - 1]
-            if jj == 0:
-                rights[ii] += ee
-                continue
-
-            ee_behind = A[ii][W - jj - 1]  # same element from line behind
-            if ee > ee_behind:
-                rights[ii] += ee - ee_behind
-    right = sum(rights)
+    right = left
 
     return bottom, top, front, back, left, right
 
 
 if __name__ == '__main__':
-    # sur = surfaceArea([[1, 2, 4],
-    #                    [2, 2, 3],
-    #                    [1, 3, 4]])
-    # print(sur)
-    # print(sum(sur))
-    # bottom  9
-    # top     9
-    # front  10
-    # back   10
-    # left   11
-    # right  11
-
-    # sum    60
-
-    sur = surfaceArea([[1, 3, 4],
+    sur = surfaceArea([[1, 2, 4],
                        [2, 2, 3],
-                       [1, 2, 4]])
-    print(sur)
+                       [1, 3, 4]])
     print(sum(sur))
     # bottom  9
     # top     9
@@ -105,8 +69,50 @@ if __name__ == '__main__':
     # back   10
     # left   11
     # right  11
-
     # sum    60
+
+    sur = surfaceArea([[91, 80, 7, 41, 36, 11, 48, 57, 40, 43]])
+    print(sum(sur))
+    # bottom 10
+    # top    10
+    # front  91+80+7+41+36+11+48+57+40+43=454
+    # back   91+80+7+41+36+11+48+57+40+43=454
+    # left   91+(41-7)+(48-11)+(57-48)+(43-40)=174
+    # right  43+(57-40)+(36-11)+(41-36)+(80-7)+(91-80)=174
+    # sum    1276
+
+    sur = surfaceArea([[1, 3, 4],
+                       [2, 2, 3],
+                       [1, 2, 4]])
+    print(sum(sur))
+    # bottom  9
+    # top     9
+    # front  10
+    # back   10
+    # left   11
+    # right  11
+    # sum    60
+
+    sur = surfaceArea([
+        [51],
+        [32],
+        [28],
+        [49],
+        [28],
+        [21],
+        [98],
+        [56],
+        [99],
+        [77]
+    ])
+    print(sum(sur))
+    # bottom 10
+    # top    10
+    # front  51+49-28+98-21+99-56=192
+    # back   77+(99-77)+(98-56)+(28-21)+(49-28)+(32-28)+(51-32)=192
+    # left   51+32+28+49+28+21+98+56+99+77=539
+    # right  51+32+28+49+28+21+98+56+99+77=539
+    # sum    1482
 
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
     # HW = input().split()
