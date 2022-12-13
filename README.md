@@ -11,17 +11,17 @@ make clean-up
 ### Build image
 
 ```shell
-sudo docker build --rm -t hackerrank-image:1 .
-sudo docker image ls -a
+docker build --rm -t hackerrank-image:1 .
+docker image ls -a
 ```
 
 ```shell
-sudo docker run -it -d --name hackerrank hackerrank-image:1
-sudo docker ps
+docker run -it -d --name hackerrank hackerrank-image:1
+docker ps
 ```
 
 ```shell
-sudo docker exec -it hackerrank bash
+docker exec -it hackerrank bash
 ```
 
 ### Debug
