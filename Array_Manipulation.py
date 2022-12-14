@@ -2,12 +2,20 @@
 
 def arrayManipulation(n, queries):
     row = [0] * n
-    for query in queries:
-        low, high, increment = query
-        for idx in range(high - (low - 1)):
-            idx += low - 1
-            row[idx] += increment
-    return max(row)
+    for low, high, incr in queries:
+        row[low-1] += incr
+        if high != n:
+            row[high] -= incr
+
+    resp = 0
+    acc = 0
+
+    for elem in row:
+        acc += elem
+        if acc > resp:
+            resp = acc
+
+    return resp
 
 
 if __name__ == '__main__':
