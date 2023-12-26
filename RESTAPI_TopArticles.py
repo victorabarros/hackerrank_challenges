@@ -31,7 +31,10 @@ def topArticles(limit):
         if page_number >= body["total_pages"]:
             break
 
-        # Improvements: once you know the total_pages, you can requests the next pages in concurrency. this while would decrease O(total_pages) to ~O(2)
+        # Improvements: once you know the total_pages,
+        # you can requests the next pages in concurrency.
+        # this would decrease O(total_pages) to ~O(2)
+
         page_number += 1
 
     articles.sort(key=lambda art: (art["num_comments"] or 0,
